@@ -156,9 +156,8 @@ test_push_nothing() {
 	# make some changes
 	echo "1" >> "./test 1.txt"
 	git commit -a -m "change" > /dev/null 2>&1
-	push=$($GIT_FTP push -vv --dry-run)
+	push=$($GIT_FTP push --dry-run)
 	assertEquals 0 $?
-	git diff HEAD~
 	assertTrue "$push" "echo \"$push\" | grep '1 file to sync:'"
 	echo 'test 1.txt' >> .git-ftp-ignore
 	push=$($GIT_FTP push)
@@ -709,7 +708,6 @@ test_file_with_unicode() {
 	file1enc='umlaut_%C3%A4.md'
 	echo 'content' > "$file1"
 	git add .
-	git status
 	git commit -a -m 'added special filenames' -q
 	init=$($GIT_FTP init)
 	assertTrue " file $file1 not uploaded" "remote_file_equals '$file1' '$file1enc'"
