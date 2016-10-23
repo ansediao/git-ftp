@@ -1,9 +1,15 @@
 os:
-  - linux
+  #- linux
   - osx
 
+osx_image:
+  - beta-xcode6.1
+  - beta-xcode6.3
+  - xcode7.2
+  - xcode8
+
 env:
-  - LFTP_SUPPORT=0
+  #- LFTP_SUPPORT=0
   - LFTP_SUPPORT=1
 
 language: sh
