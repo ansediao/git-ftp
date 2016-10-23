@@ -636,8 +636,7 @@ test_file_with_unicode() {
 	git add .
 	git status
 	git commit -a -m 'added special filenames' -q
-	$GIT_FTP init -vv
-	#init=$($GIT_FTP init)
+	init=$($GIT_FTP init)
 	assertTrue " file $file1 not uploaded" "remote_file_equals '$file1' '$file1enc'"
 	git rm "$file1" -q
 	git commit -m 'delete' -q
